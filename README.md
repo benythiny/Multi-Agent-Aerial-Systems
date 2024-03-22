@@ -1,6 +1,8 @@
 # Multi-Agent-Aerial-Systems
 This repository contains three projects for the [Multi Robot Aerial Systems course](https://cw.fel.cvut.cz/b231/courses/mrs/start). The projects focus on practical implementation of control and estimation algorithms for robots, using a singularity software container with ROS for simulation.
 
+![Task 3 Image](media/main.png)
+
 ## Project 1: Multirotor UAV control and state estimation
 This project develops control and state estimation algorithms for multirotor UAVs. It implements a PID controller with a feedforward term and integrates a Linear Kalman Filter to enhance UAV's position measurements.
 
