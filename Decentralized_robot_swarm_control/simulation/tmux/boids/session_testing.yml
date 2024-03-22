@@ -1,0 +1,21 @@
+name: boids_testing
+root: ./
+pre_window: 
+startup_window: task
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+  - drs:
+      layout: tiled
+      panes:
+        - waitForRos; sleep 3; rosrun rqt_reconfigure rqt_reconfigure
+  - task:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_evaluation boids.launch
+  - rviz:
+      layout: tiled
+      panes:
+        - waitForRos; rosrun rviz rviz -d ./rviz.rviz

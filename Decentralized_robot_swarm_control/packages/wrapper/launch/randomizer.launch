@@ -1,0 +1,36 @@
+<launch>
+
+  <!-- args corresponding to environment variables -->
+  <arg name="custom_config" default="" />
+
+    <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="task_03_wrapper_randomizer_nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <arg name="n_uavs" default="" />
+
+
+  <node name="task_03_wrapper" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_03_wrapper/Randomizer $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <rosparam file="$(find task_03_wrapper)/config/randomizer.yaml" />
+
+    <!-- Load a user param file -->
+    <rosparam if="$(eval not arg('custom_config') == '')" file="$(arg custom_config)" />
+
+    <param name="n_uavs" value="$(arg n_uavs)" />
+
+    <!-- publishers -->
+    <remap from="~corrupt_measurements_out" to="/task_03_wrapper/randomizer" />
+
+  </node>
+
+
+</launch>

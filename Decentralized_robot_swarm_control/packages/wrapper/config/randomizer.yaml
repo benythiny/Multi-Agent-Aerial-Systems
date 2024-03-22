@@ -1,0 +1,21 @@
+version: "1.0.0"
+
+randomizer:
+  timer_rate: 2 # (Hz)
+
+  change_period: # how often we change distributions regardless if the formation has stopped or not
+    from: 20.0 # (s)
+    to:   60.0 # (s)
+
+  # distribution:
+    # none:
+    # static:
+    #   offset:
+    #     from: -3.14 # (rad)
+    #     to:    3.14 # (rad)
+    # uniform:
+    # normal:
+    #   stdev:
+    #     from: 0.0  # (rad)
+    #     to:   1.57 # (rad)
+

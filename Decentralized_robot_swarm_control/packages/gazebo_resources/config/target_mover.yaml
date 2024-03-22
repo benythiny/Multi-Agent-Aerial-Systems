@@ -1,0 +1,18 @@
+model_name: "ground_robot"
+
+start_positions: [
+
+  30.0, 30.0, 0.0,
+  -30.0, 30.0, 0.0,
+  30.0, -30.0, 0.0,
+  -30.0, -30.0, 0.0,
+
+] # [x, y, z] in meters
+
+speed: 0.2 # meters per second
+
+goal_threshold: 0.05 # meters
+
+cell_step: 10.0 # meters
+
+num_cells: 10

@@ -1,0 +1,89 @@
+version: "1.0.0"
+
+# FEEL FREE TO PLAY WITH THIS CONFIG FILE
+# BUT BEWARE THAT IT WON'T BE OVERWRITTEN DURING EVALUATION
+
+rate: 30                 # (Hz): use to slow down or speed up the simulation
+stop_after_finish: false # If to stop the task once it fails
+
+# VALIDATION
+validation:
+  max_dead_ratio: 0.3 # if dead/alive exceeds this threshold, task fails
+  max_iterations: 3600 # 2 * 60 * 30 (2 min if run at 30 Hz)
+
+# AGENTS
+agents:
+
+  count: 50 # number of agents
+
+  neighborhood:
+    radius: 1.5 # visibility radius
+
+  colorblind_ratio: 0.8 # ratio of agents unable to distinguish beacon colors
+
+  # Spawn area
+  spawn:
+    limits:
+      x:
+        min: -5.0
+        max: 5.0
+      y:
+        min: -5.0
+        max: 5.0
+
+  distribution:
+    spawn: [0.25, 0.25, 0.25, 0.25] # chance of choosing one of the four classes at initialization
+    prior:
+      max_class_prob: 0.5 # probability of the selected class (rest is distributed uniformly)
+
+  # Killing agents
+  kill:
+    enable: true
+    # Agents too close to each other collide
+    proximity:
+      radius: 0.3
+      probability: 0.3
+    # Agents outside of safe area are eaten by a predator
+    predator:
+      distance_from_beacons: 8.0 # distance in each dimension away from the beacons
+      probability: 0.01
+    # Agents with too few neighbors die of loneliness
+    knn:
+      radius: 5.0
+      min_neighbors: 2
+      probability: 0.2
+
+# BEACONS
+beacons:
+  radius: 1.5         # emission radius
+  spawn_distance: 8.0 # length of the square size
+  emission_error: 0.5 # probability of incorrect pointer-color sensing by an agent
+
+# AGENT MODEL
+constraints:
+  velocity:
+    min: 0.1
+    max: 0.2
+  heading:
+    max_change: 0.523598776 # (rad) per iteration
+
+# VISUALIZATION
+visualization:
+  edges:
+    show: True
+    lw: 0.05
+  agents:
+    size:
+      pos: 0.12
+      vel: 0.1
+      dead: 0.3
+  environment:
+    predator_zone:
+      lw: 0.5
+    beacons:
+      inner:
+        size: 0.2
+      alpha: 0.2
+  arrows:
+    shaft_diameter: 0.05
+    head_diameter: 0.15

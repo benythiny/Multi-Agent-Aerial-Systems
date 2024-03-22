@@ -1,0 +1,42 @@
+<launch>
+
+  <arg name="UAV_NAME" default="uav1"/>
+  <arg name="STANDALONE" default="true"/>
+  <arg name="RUN_TYPE" default="simulation" />
+  <arg name="ODOMETRY_TYPE" default="gps" />
+  <arg name="UAV_TYPE" default="x500" />
+  <arg name="WORLD_FILE" default="$(find task_01_evaluation)/config/custom_configs/world.yaml" />
+
+  <include file="$(find mrs_simulation)/launch/simulation.launch">
+    <arg name="gui" value="false" />
+  </include>
+
+  <include file="$(find mrs_uav_general)/launch/core.launch">
+
+    <arg name="UAV_NAME" value="$(arg UAV_NAME)" />
+    <arg name="STANDALONE" value="$(arg STANDALONE)" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+    <arg name="ODOMETRY_TYPE" value="$(arg ODOMETRY_TYPE)" />
+    <arg name="UAV_TYPE" value="$(arg UAV_TYPE)" />
+    <arg name="WORLD_FILE" value="$(arg WORLD_FILE)" />
+
+    <arg name="config_constraint_manager" value="$(find task_01_evaluation)/config/custom_configs/constraint_manager.yaml" />
+    <arg name="config_control_manager" value="$(find task_01_evaluation)/config/custom_configs/control_manager.yaml" />
+    <arg name="config_odometry" value="$(find task_01_evaluation)/config/custom_configs/odometry.yaml" />
+    <arg name="config_trajectory_generation" value="$(find task_01_evaluation)/config/custom_configs/trajectory_generation.yaml" />
+    <arg name="config_uav_manager" value="$(find task_01_evaluation)/config/custom_configs/uav_manager.yaml" />
+
+  </include>
+
+  <include file="$(find task_01_wrapper)/launch/param_server.launch">
+  </include>
+
+  <include file="$(find task_01_wrapper)/launch/spawner.launch">
+  </include>
+
+  <include file="$(find task_01_wrapper)/launch/automatic_start.launch">
+    <arg name="UAV_NAME" value="$(arg UAV_NAME)" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+  </include>
+
+</launch>

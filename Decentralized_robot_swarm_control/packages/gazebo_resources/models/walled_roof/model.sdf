@@ -1,0 +1,222 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">
+  <model name='walled_roof'>
+
+    <static>true</static>
+
+      <!-- roof {-->
+      
+      <link name='roof'>
+      
+        <pose>0 0 10.1 0 -0 0</pose>
+      
+        <collision name='roof_collision'>
+          <geometry>
+            <box>
+              <size>121 121 0.1</size>
+            </box>
+          </geometry>
+          <pose>0 0 0.05 0 -0 0</pose>
+        </collision>
+      
+        <visual name='roof_visual'>
+          <pose>0 0 0.05 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>121 121 0.1</size>
+            </box>
+          </geometry>
+      
+          <material>
+            <script>
+              <uri>model://column/materials/scripts</uri>
+              <uri>model://column/materials/textures</uri>
+              <name>Task03/Glass</name>
+            </script>
+          </material>
+      
+          <meta>
+            <layer>1</layer>
+          </meta>
+      
+        </visual>
+      
+      </link>
+      
+      <!--}-->
+
+      <!-- wall 1 {-->
+      
+      <link name='wall_1'>
+      
+        <pose>60 0 0 0 -0 -1.5708</pose>
+      
+        <collision name='wall_1_collision'>
+          <geometry>
+            <box>
+              <size>121 1 10.1</size>
+            </box>
+          </geometry>
+          <pose>0 0 5.05 0 -0 0</pose>
+        </collision>
+      
+        <visual name='wall_1_visual'>
+      
+          <pose>0 0 5.05 0 -0 0</pose>
+      
+          <geometry>
+            <box>
+              <size>121 1 10.1</size>
+            </box>
+          </geometry>
+      
+          <material>
+            <script>
+              <uri>model://column/materials/scripts</uri>
+              <uri>model://column/materials/textures</uri>
+              <name>Task03/Glass</name>
+            </script>
+          </material>
+      
+          <meta>
+            <layer>0</layer>
+          </meta>
+      
+        </visual>
+      
+      </link>
+      
+      <!--}-->
+
+      <!-- wall 2 {-->
+      
+      <link name='wall_2'>
+      
+        <pose>0 -60 0 0 -0 3.14159</pose>
+      
+        <collision name='wall_2_collision'>
+          <geometry>
+            <box>
+              <size>121 1 10.1</size>
+            </box>
+          </geometry>
+          <pose>0 0 5.05 0 -0 0</pose>
+        </collision>
+      
+        <visual name='wall_2_visual'>
+      
+          <pose>0 0 5.05 0 -0 0</pose>
+      
+          <geometry>
+            <box>
+              <size>121 1 10.1</size>
+            </box>
+          </geometry>
+      
+          <material>
+            <script>
+              <uri>model://column/materials/scripts</uri>
+              <uri>model://column/materials/textures</uri>
+              <name>Task03/Glass</name>
+            </script>
+          </material>
+      
+          <meta>
+            <layer>0</layer>
+          </meta>
+      
+        </visual>
+      
+      </link>
+      
+      <!--}-->
+
+      <!-- wall 3 {-->
+      
+      <link name='wall_3'>
+      
+        <pose>-60 0 0 0 -0 1.5708</pose>
+      
+        <collision name='wall_3_collision'>
+          <geometry>
+            <box>
+              <size>121 1 10.1</size>
+            </box>
+          </geometry>
+          <pose>0 0 5.05 0 -0 0</pose>
+        </collision>
+      
+        <visual name='wall_3_visual'>
+      
+          <pose>0 0 5.05 0 -0 0</pose>
+      
+          <geometry>
+            <box>
+              <size>121 1 10.1</size>
+            </box>
+          </geometry>
+      
+          <material>
+            <script>
+              <uri>model://column/materials/scripts</uri>
+              <uri>model://column/materials/textures</uri>
+              <name>Task03/Glass</name>
+            </script>
+          </material>
+      
+          <meta>
+            <layer>0</layer>
+          </meta>
+      
+        </visual>
+      
+      </link>
+      
+      <!--}-->
+
+      <!-- wall 4 {-->
+      
+      <link name='wall_4'>
+      
+        <pose>0 60 0 0 -0 0</pose>
+      
+        <collision name='wall_4_collision'>
+          <geometry>
+            <box>
+              <size>121.001 1 10.1</size>
+            </box>
+          </geometry>
+          <pose>0 0 5.05 0 -0 0</pose>
+        </collision>
+      
+        <visual name='wall_4_visual'>
+      
+          <pose>0 0 5.05 0 -0 0</pose>
+      
+          <geometry>
+            <box>
+              <size>121.001 1 10.1</size>
+            </box>
+          </geometry>
+      
+          <material>
+            <script>
+              <uri>model://column/materials/scripts</uri>
+              <uri>model://column/materials/textures</uri>
+              <name>Task03/Glass</name>
+            </script>
+          </material>
+      
+          <meta>
+            <layer>0</layer>
+          </meta>
+      
+        </visual>
+      
+      </link>
+      
+      <!--}-->
+
+  </model>
+</sdf>

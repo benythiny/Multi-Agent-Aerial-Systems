@@ -1,0 +1,29 @@
+<launch>
+
+    <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg name="problems_file_path" default="$(find task_02_evaluation)/problems/problems.yaml" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <arg name="file" default="" />
+
+  <node name="reshaping_test" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_02_evaluation/ReshapingTest $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <rosparam file="$(find task_02_evaluation)/config/reshaping_test.yaml" />
+    <rosparam file="$(arg problems_file_path)" />
+
+    <param name="file" value="$(arg file) "/>
+    <param name="problems_file_path" value="$(arg problems_file_path)" />
+
+  </node>
+
+</launch>

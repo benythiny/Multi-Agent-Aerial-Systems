@@ -1,0 +1,17 @@
+<library path="lib/libTask03SimulationTest">
+  <class name="task_03_evaluation/SimulationTest" type="task_03_evaluation::SimulationTest" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Evaluation Simulation test nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask03WeightingTest">
+  <class name="task_03_evaluation/WeightingTest" type="task_03_evaluation::WeightingTest" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Evaluation Weighting test nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask03BoidsTest">
+  <class name="task_03_evaluation/BoidsTest" type="task_03_evaluation::BoidsTest" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Evaluation Boids test nodelet</description>
+  </class>
+</library>

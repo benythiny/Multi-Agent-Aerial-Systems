@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">
+  <model name='column'>
+
+    <static>true</static>
+
+    <link name="link">
+
+      <pose>0 0 0.0 0 0 0</pose>
+
+      <visual name="visual">
+
+        <geometry>
+          <mesh>
+            <uri>model://column/meshes/column.obj</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <script>
+            <uri>model://column/materials/scripts</uri>
+            <uri>model://column/materials/textures</uri>
+            <name>Task03/Glass</name>
+          </script>
+          <shader type='vertex'>
+            <normal_map>__default__</normal_map>
+          </shader>
+        </material>
+
+        <cast_shadows>1</cast_shadows>
+
+      </visual>
+
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://column/meshes/column.obj</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+
+    </link>
+
+  </model>
+</sdf>

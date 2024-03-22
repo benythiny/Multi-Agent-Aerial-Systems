@@ -1,0 +1,30 @@
+<launch>
+
+  <arg name="custom_config" default="" />
+
+    <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="$(arg UAV_NAME)_nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <arg name="collisions_topic" default="/gazebo/default/physics/contacts" />
+
+  <node name="task_03_collision_checker" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_03_wrapper/CollisionChecker $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <rosparam file="$(find task_03_wrapper)/config/collision_checker.yaml" />
+
+    <param name="collisions_topic" value="$(arg collisions_topic)" />
+
+      <!-- Load a user param file -->
+    <rosparam if="$(eval not arg('custom_config') == '')" file="$(arg custom_config)" />
+
+  </node>
+
+</launch>

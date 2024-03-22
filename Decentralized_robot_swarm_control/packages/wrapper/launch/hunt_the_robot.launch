@@ -1,0 +1,53 @@
+<launch>
+
+  <!-- args corresponding to environment variables -->
+  <arg name="UAV_NAME" default="$(optenv UAV_NAME)" />
+
+  <arg name="custom_config" default="" />
+
+    <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="$(arg UAV_NAME)_nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <arg name="swarm_member_state_topic" default="task_03_wrapper/swarm_member_state" />
+  <arg name="n_uavs" default="" />
+
+  <group ns="$(arg UAV_NAME)">
+
+    <node name="task_03_wrapper" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_03_wrapper/WrapperHtR $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+      <rosparam file="$(find task_03_wrapper)/config/wrapper.yaml" />
+
+      <!-- Load a user param file -->
+      <rosparam if="$(eval not arg('custom_config') == '')" file="$(arg custom_config)" />
+
+      <param name="uav_name" value="$(arg UAV_NAME)" />
+      <param name="n_uavs" value="$(arg n_uavs)" />
+      <param name="swarm_member_state_topic" value="$(arg swarm_member_state_topic)" />
+
+      <!-- subscribers -->
+      <remap from="~target_pose_in" to="/target_pose" />
+      <remap from="~position_cmd_in" to="control_manager/position_cmd" />
+      <remap from="~control_manager_diag_in" to="control_manager/diagnostics" />
+      <remap from="~params_in" to="/param_server_hunt_the_robot/params" />
+      <remap from="~randomizer_in" to="/task_03_wrapper/randomizer" />
+
+      <!-- publishers -->
+      <remap from="~diagnostics_out" to="~diagnostics" />
+      <remap from="~velocity_reference_out" to="control_manager/velocity_reference" />
+      <remap from="~swarm_member_state_out" to="~swarm_member_state" />
+      <remap from="~swarm_member_vis_array_out" to="~swarm_member_vis_array" />
+
+    </node>
+
+  </group>
+
+</launch>

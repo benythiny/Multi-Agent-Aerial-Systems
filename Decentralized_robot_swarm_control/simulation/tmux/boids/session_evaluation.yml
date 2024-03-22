@@ -1,0 +1,17 @@
+name: boids_testing
+root: ./
+pre_window: 
+startup_window: task
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+  - task:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_evaluation boids.launch evaluation:=true
+  - rviz:
+      layout: tiled
+      panes:
+        - waitForRos; rosrun rviz rviz -d ./rviz.rviz

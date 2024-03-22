@@ -1,0 +1,16 @@
+version: "1.0.0"
+
+main_rate: 10.0 # (Hz)
+diagnostics_rate: 10.0 # [Hz]
+
+environment:
+  cell_count: 11 # width/height
+  cell_radius: 5.0 # (m)
+  gate_width: 2.0 # (m)
+
+target_noise:
+  stdev: 0.05 # (rad)
+
+swarming:
+  max_velocity: 0.75 # (m/s)
+  visibility_radius: 10.0 # (m)

@@ -1,0 +1,5 @@
+<library path="lib/libTask01Wrapper">
+  <class name="task_01_wrapper/Task01Wrapper" type="task_01_wrapper::Wrapper" base_class_type="mrs_uav_managers::Controller">
+    <description>This is the MRS Course task 01 controller wrapper.</description>
+  </class>
+</library>

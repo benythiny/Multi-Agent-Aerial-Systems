@@ -1,0 +1,15 @@
+<launch>
+
+  <arg name="use_sim_time" default="true" />
+
+    <!-- set use_sim_time flag -->
+  <group if="$(arg use_sim_time)">
+    <param name="/use_sim_time" value="true" />
+  </group>
+
+  <node name="target_mover" pkg="task_03_gazebo_resources" type="target_mover" respawn="false" output="screen" >
+      <rosparam file="$(find task_03_gazebo_resources)/config/target_mover.yaml" />
+  </node>
+
+</launch>
+

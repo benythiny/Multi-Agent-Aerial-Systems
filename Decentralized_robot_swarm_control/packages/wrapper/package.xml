@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="2">
+
+  <name>task_03_wrapper</name>
+  <version>1.0.0</version>
+  <description>The MRS course task 03 swarm wrapper</description>
+
+  <author email="petrapa6@fel.cvut.cz">Pavel Petracek</author>
+  <maintainer email="petrapa6@fel.cvut.cz">Pavel Petracek</maintainer>
+
+  <license>BSD 3-Clause</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>nodelet</depend>
+  <depend>message_generation</depend>
+  <depend>message_runtime</depend>
+  <depend>mrs_msgs</depend>
+  <depend>mrs_lib</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>mavros_msgs</depend>
+  <depend>gazebo</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_msgs</depend>
+  <depend>task_03_swarm</depend>
+  <depend>protobuf-dev</depend>
+
+  <export>
+    <nodelet plugin="${prefix}/nodelets.xml" />
+  </export>
+
+</package>

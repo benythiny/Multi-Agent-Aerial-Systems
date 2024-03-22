@@ -1,0 +1,17 @@
+<library path="lib/libTask02Wrapper">
+  <class name="task_02_wrapper/Task02Wrapper" type="task_02_wrapper::Wrapper" base_class_type="nodelet::Nodelet">
+    <description>Task 02 Wrapper nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask02Spawner">
+  <class name="task_02_wrapper/Task02Spawner" type="task_02_wrapper::Spawner" base_class_type="nodelet::Nodelet">
+    <description>Task 02 Spawner nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask02AutomaticStart">
+  <class name="task_02_wrapper/AutomaticStart" type="task_02_wrapper::AutomaticStart" base_class_type="nodelet::Nodelet">
+    <description>Task 02 AutomaticStart nodelet</description>
+  </class>
+</library>

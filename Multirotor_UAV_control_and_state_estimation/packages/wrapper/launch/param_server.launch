@@ -1,0 +1,30 @@
+<launch>
+
+  <!-- args corresponding to environment variables -->
+  <arg name="UAV_NAME" default="$(optenv UAV_NAME)" />
+
+  <arg name="custom_config" default="" />
+
+    <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="$(arg UAV_NAME)_nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <node name="param_server" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_01_wrapper/ParamServer $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <rosparam file="$(find task_01_wrapper)/config/param_server.yaml" />
+    <rosparam file="$(find task_01_controller)/config/user_params.yaml" />
+
+      <!-- publishers -->
+    <remap from="~params_out" to="~params" />
+
+  </node>
+
+</launch>

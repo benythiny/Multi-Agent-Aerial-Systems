@@ -1,0 +1,46 @@
+<launch>
+
+  <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <arg name="evaluation" default="false" />
+  <arg name="variant" default="" />
+  <arg name="file" default="" />
+
+  <include file="$(find task_03_wrapper)/launch/param_server.launch">
+    <arg name="task" value="boids" />
+  </include>
+
+  <node name="boids_test" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_03_evaluation/BoidsTest $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <!-- Test config -->
+    <rosparam file="$(find task_03_evaluation)/config/boids_test.yaml" />
+
+    <rosparam if="$(eval arg('evaluation') == false)" file="$(find task_03_wrapper)/config/boids_testing.yaml" />
+
+    <!-- Variant specification -->
+    <param name="evaluation" value="$(arg evaluation)" />
+    <param name="variant" value="$(arg variant)" />
+
+    <!-- Output file -->
+    <param name="file" value="$(arg file)"/>
+
+    <!-- subscribers -->
+    <remap from="~params_in" to="/param_server_boids/params" />
+
+    <!-- publishers -->
+    <remap from="~visualization_out" to="~visualization/general" />
+    <remap from="~visualization_custom_out" to="~visualization/custom" />
+
+  </node>
+
+</launch>

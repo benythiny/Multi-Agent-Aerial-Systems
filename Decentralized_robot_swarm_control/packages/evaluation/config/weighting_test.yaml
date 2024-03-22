@@ -1,0 +1,18 @@
+version: "1.0.0"
+
+test:
+
+  n_parametrizations: 100  # [-], how many parametrizations
+  n_distances:        1000 # [-], how many distances for each parametrization
+
+  problem:
+
+    # generate == true:  generate problems and save them to a file
+    # generate == false: load problems from a file
+    generate: false
+
+requirements:
+  time_limit: 10.0 # [s]
+
+scoring:
+  base_score_pass: 1.0

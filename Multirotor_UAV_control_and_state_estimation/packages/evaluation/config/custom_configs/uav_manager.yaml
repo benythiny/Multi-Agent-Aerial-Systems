@@ -1,0 +1,10 @@
+takeoff:
+  after_takeoff:
+    controller: "Task01Controller"
+    # controller: "Se3Controller"
+
+min_height_checking:
+  enabled: false
+
+max_height_checking:
+  enabled: false

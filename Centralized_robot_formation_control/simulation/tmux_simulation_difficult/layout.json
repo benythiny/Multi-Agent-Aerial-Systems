@@ -1,0 +1,87 @@
+[
+	{
+		"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splitv",
+		"percent": 0.222222222222222,
+		"type": "con",
+		"nodes": [
+			{
+				"border": "normal",
+				"floating": "auto_off",
+				"layout": "splith",
+				"percent": 0.75,
+				"type": "con",
+				"nodes": [
+					{
+						"border": "normal",
+						"floating": "auto_off",
+						"layout": "splitv",
+						"percent": 0.5,
+						"type": "con",
+						"nodes": [
+							{
+								"border": "pixel",
+								"current_border_width": 3,
+								"floating": "auto_off",
+								"geometry": {
+									"height": 481,
+									"width": 1280,
+									"x": 0,
+									"y": 0
+								},
+								"name": "Gazebo",
+								"percent": 1,
+								"swallows": [
+									{
+										"instance": "^gazebo$"
+									}
+								],
+								"type": "con"
+							}
+						]
+					},
+					{
+						"border": "pixel",
+						"current_border_width": 3,
+						"floating": "auto_off",
+						"geometry": {
+							"height": 665,
+							"width": 1058,
+							"x": 966,
+							"y": 32
+						},
+						"name": "rviz.rviz* - RViz",
+						"percent": 0.5,
+						"swallows": [
+							{
+								"instance": "^rviz$"
+							}
+						],
+						"type": "con"
+					}
+				]
+			},
+			{
+				"border": "pixel",
+				"current_border_width": 3,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 340,
+					"width": 564,
+					"x": 0,
+					"y": 0
+				},
+				"name": "runVim session.yml",
+				"percent": 0.25,
+				"swallows": [
+					{
+						"instance": "^urxvt$"
+					}
+				],
+				"type": "con"
+			}
+		]
+	}
+]

@@ -1,0 +1,42 @@
+constraint_management:
+
+  allowed_constraints:
+    RTK: ["medium"]
+
+  fallback_constraints:
+    RTK: "medium"
+
+medium:
+
+  horizontal:
+    speed: 2.0
+    acceleration: 0.5
+    jerk: 50.0
+    snap: 50.0
+
+  vertical:
+
+    ascending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 50.0
+      snap: 50.0
+
+    descending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 50.0
+      snap: 50.0
+
+  heading:
+    speed: 1.0
+    acceleration: 1.0
+    jerk: 20.0
+    snap: 20.0
+
+  angular_speed:
+    roll: 60.0
+    pitch: 60.0
+    yaw: 10.0
+
+  tilt: deg(60)

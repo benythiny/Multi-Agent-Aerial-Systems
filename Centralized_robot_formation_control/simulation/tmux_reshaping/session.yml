@@ -1,0 +1,10 @@
+name: debug
+root: ./
+pre_window: export DEBUG=true
+startup_window: main
+windows:
+  - main:
+      layout: tiled
+      panes:
+        - rosrun task_02_evaluation rviz.sh
+        - roslaunch task_02_evaluation reshaping_debug.launch debug:=$DEBUG

@@ -1,0 +1,26 @@
+<launch>
+
+  <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg name="file" default="" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <node name="kalman_test" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_01_evaluation/KalmanTest $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <rosparam file="$(find task_01_controller)/config/user_params.yaml" />
+    <rosparam file="$(find task_01_evaluation)/config/kalman_test.yaml" />
+
+    <param name="file" value="$(arg file) "/>
+
+  </node>
+
+</launch>

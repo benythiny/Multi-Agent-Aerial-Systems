@@ -1,0 +1,7 @@
+uavs: [
+  "uav1",
+  "uav2",
+  "uav3",
+]
+
+collision_duration: 1.0 # [s]

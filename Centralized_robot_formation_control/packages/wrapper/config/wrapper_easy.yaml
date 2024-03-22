@@ -1,0 +1,18 @@
+version: "1.0.0"
+
+main_rate: 10.0 # [Hz]
+diagnostics_rate: 10.0 # [Hz]
+
+n_uavs: 3
+
+robot:
+  xy_deviation: 0.5
+
+ranging:
+  abs_deviation: 0.02
+  rel_deviation: 0.02
+
+rviz:
+  spacing: 10.0 # [m]
+  x_columns: 20
+  y_columns: 20

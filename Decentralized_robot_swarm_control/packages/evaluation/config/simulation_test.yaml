@@ -1,0 +1,17 @@
+version: "1.0.0"
+
+n_uavs: 3
+eval_timer_rate: 10 # [Hz]
+
+requirements:
+  distance_to_robot: 7.0 # [m]
+  time_under_distance: 10.0 # [s]
+  max_mutual_distance: 10.0 # [m]
+  time_limit: 300.0 # [s]
+
+scoring:
+  points: 8
+
+# bonus_points:
+#   per_time: 30.0 # [s]
+#   points: 1.0

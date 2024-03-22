@@ -1,0 +1,11 @@
+version: "1.0.0"
+
+n_uavs: 1
+
+uav_type: "t650"
+
+args: ""
+
+spawn_points: [
+  0, 0,
+]

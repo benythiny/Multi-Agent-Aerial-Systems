@@ -1,0 +1,17 @@
+<library path="lib/libTask01ParamServer">
+  <class name="task_01_wrapper/ParamServer" type="task_01_wrapper::ParamServer" base_class_type="nodelet::Nodelet">
+    <description>Task 01 Param server nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask01AutomaticStart">
+  <class name="task_01_wrapper/AutomaticStart" type="task_01_wrapper::AutomaticStart" base_class_type="nodelet::Nodelet">
+    <description>Task 01 Automatic Start nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask01Spawner">
+  <class name="task_01_wrapper/Spawner" type="task_01_wrapper::Spawner" base_class_type="nodelet::Nodelet">
+    <description>Task 01 Spawner nodelet</description>
+  </class>
+</library>

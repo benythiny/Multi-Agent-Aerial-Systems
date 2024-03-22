@@ -1,0 +1,24 @@
+Bootstrap: localimage
+From: ../../images/mrs_uav_system.sif
+
+%post
+
+    ### USER INSTALL PART START
+
+    sudo apt-get -y install ...
+
+    ### USER INSTALL PART END
+
+%environment
+    export LC_ALL=C
+
+%runscript
+  CMD="${@}"
+
+  if [ -z "${CMD}" ]; then
+    /bin/bash --login
+  else
+    /bin/bash --login -c "${CMD}"
+  fi
+
+  exit 0

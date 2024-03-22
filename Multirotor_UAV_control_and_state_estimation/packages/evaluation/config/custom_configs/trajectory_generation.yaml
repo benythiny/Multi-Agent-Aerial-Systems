@@ -1,0 +1,6 @@
+max_time: 5.0 # [s]
+
+check_trajectory_deviation:
+  enabled: true
+  max_deviation: 2.00 # [m]
+  max_iterations: 6 # [-]

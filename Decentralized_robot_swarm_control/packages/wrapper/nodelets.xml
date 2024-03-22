@@ -1,0 +1,41 @@
+<library path="lib/libTask03WrapperHuntTheRobot">
+  <class name="task_03_wrapper/WrapperHtR" type="task_03_wrapper::WrapperHtR" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Wrapper nodelet for the Hunt-the-Robot task</description>
+  </class>
+</library>
+
+<library path="lib/libTask03Spawner">
+  <class name="task_03_wrapper/Spawner" type="task_03_wrapper::Spawner" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Spawner nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask03ParamServer">
+  <class name="task_03_wrapper/ParamServer" type="task_03_wrapper::ParamServer" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Param server nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask03Plotter">
+  <class name="task_03_wrapper/Plotter" type="task_03_wrapper::Plotter" base_class_type="nodelet::Nodelet">
+    <description>Task 03 plotter nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask03AutomaticStart">
+  <class name="task_03_wrapper/AutomaticStart" type="task_03_wrapper::AutomaticStart" base_class_type="nodelet::Nodelet">
+    <description>Task 03 AutomaticStart nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask03Randomizer">
+  <class name="task_03_wrapper/Randomizer" type="task_03_wrapper::Randomizer" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Randomizer nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask03CollisionChecker">
+  <class name="task_03_wrapper/CollisionChecker" type="task_03_wrapper::CollisionChecker" base_class_type="nodelet::Nodelet">
+    <description>Task 03 Collision Checker</description>
+  </class>
+</library>

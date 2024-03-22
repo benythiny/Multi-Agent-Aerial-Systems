@@ -1,0 +1,8 @@
+version: "1.0.0"
+
+main_rate: 30.0 # [Hz]
+
+rviz:
+  spacing: 10.0 # [m]
+  x_columns: 12
+  y_columns: 12

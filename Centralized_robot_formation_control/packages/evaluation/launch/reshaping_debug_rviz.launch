@@ -1,0 +1,5 @@
+<launch>
+
+  <node name="debugrviz" pkg="rviz" type="rviz" args="-d $(find task_02_evaluation)/rviz/debug.rviz" output="screen" />
+
+</launch>

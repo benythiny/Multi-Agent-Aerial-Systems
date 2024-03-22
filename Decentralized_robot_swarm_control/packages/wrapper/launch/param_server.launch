@@ -1,0 +1,28 @@
+<launch>
+
+  <!-- select task: {hunt_the_robot, boids} -->
+  <arg name="task" />
+
+    <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="$(arg task)_nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <node name="param_server_$(arg task)" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_03_wrapper/ParamServer $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <rosparam file="$(find task_03_wrapper)/config/param_server.yaml" />
+    <rosparam file="$(find task_03_swarm)/config/user_params_$(arg task).yaml" />
+
+      <!-- publishers -->
+    <remap from="~params_out" to="~params" />
+
+  </node>
+
+</launch>

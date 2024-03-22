@@ -1,0 +1,10 @@
+version: "1.0.0"
+
+requirements:
+  distance_to_robot: 20.0 # [m]
+  time_under_distance: 60.0 # [s]
+  time_limit: 420.0 # [s]
+
+scoring:
+  easy: 10
+  difficult: 20

@@ -1,0 +1,21 @@
+version: "1.0.0"
+
+test:
+
+  n_uavs: 10 # [-], do the test for a groups of  2 to n_uavs
+  n_problems: 100 # [-], how many problems per uav
+
+  problem:
+    min_dist_points: 3.0 # [m], min distace of
+
+    # generate == true: generate problems and save them to a file
+    # generate == false: load problems from a file
+    generate: false
+
+scoring:
+  base_score_pass: 0.0
+  score_per_uav: 1.0
+
+requirements:
+  min_uav_distance: 1.2 # [m]
+  time_limit: 80 # [s]

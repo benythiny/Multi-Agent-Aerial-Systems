@@ -1,0 +1,17 @@
+<library path="lib/libTask02SimulationTest">
+  <class name="task_02_evaluation/SimulationTest" type="task_02_evaluation::SimulationTest" base_class_type="nodelet::Nodelet">
+    <description>Task 02 Evaluation Simulation test nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask02ReshapingTest">
+  <class name="task_02_evaluation/ReshapingTest" type="task_02_evaluation::ReshapingTest" base_class_type="nodelet::Nodelet">
+    <description>Task 02 Evaluation Reshaping test nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask02ReshapingDebug">
+  <class name="task_02_evaluation/ReshapingDebug" type="task_02_evaluation::ReshapingDebug" base_class_type="nodelet::Nodelet">
+    <description>Task 02 Evaluation Reshaping debug nodelet</description>
+  </class>
+</library>

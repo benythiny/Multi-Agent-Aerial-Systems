@@ -1,0 +1,11 @@
+<library path="lib/libTask01KalmanTest">
+  <class name="task_01_evaluation/KalmanTest" type="task_01_evaluation::KalmanTest" base_class_type="nodelet::Nodelet">
+    <description>Task 01 Evaluation Kalman nodelet</description>
+  </class>
+</library>
+
+<library path="lib/libTask01ControllerTest">
+  <class name="task_01_evaluation/ControllerTest" type="task_01_evaluation::ControllerTest" base_class_type="nodelet::Nodelet">
+    <description>Task 01 Evaluation Controller test nodelet</description>
+  </class>
+</library>

@@ -1,0 +1,19 @@
+version: "1.0.0"
+
+n_uavs: 3
+
+uav_type: "x500"
+
+args: "--enable-ground-truth"
+
+spawn_points: [
+  0, 0,
+  3, 0,
+  3, 3,
+  0, 3,
+  -3, 3,
+  -3, 0,
+  -3, -3,
+  0, -3,
+  3, -3,
+]

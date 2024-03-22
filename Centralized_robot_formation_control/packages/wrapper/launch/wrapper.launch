@@ -1,0 +1,46 @@
+<launch>
+
+  <arg name="custom_config" default="" />
+  <arg name="variant" default="" />
+
+    <!-- other args -->
+  <arg name="standalone" default="true" />
+  <arg name="debug" default="false" />
+
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="standalone" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet" value="load" />
+  <arg     if="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="" />
+  <arg unless="$(eval arg('standalone') or arg('debug'))" name="nodelet_manager" value="nodelet_manager" />
+
+  <arg     if="$(arg debug)" name="launch_prefix" value="debug_roslaunch" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+  <arg name="position_cmd_topic" default="control_manager/position_cmd" />
+  <arg name="control_manager_diag_topic" default="control_manager/diagnostics" />
+  <arg name="path_srv" default="trajectory_generation/path" />
+
+  <arg name="obstacle_file" default="$(find task_02_gazebo_resources)/models/column/meshes/column.dae" />
+
+  <node name="task_02_wrapper" pkg="nodelet" type="nodelet" args="$(arg nodelet) task_02_wrapper/Task02Wrapper $(arg nodelet_manager)" output="screen" launch-prefix="$(arg launch_prefix)">
+
+    <rosparam file="$(find task_02_wrapper)/config/wrapper_$(arg variant).yaml" />
+
+      <!-- Load a user param file -->
+    <rosparam if="$(eval not arg('custom_config') == '')" file="$(arg custom_config)" />
+
+    <param name="position_cmd_topic" value="$(arg position_cmd_topic)" />
+    <param name="control_manager_diag_topic" value="$(arg control_manager_diag_topic)" />
+    <param name="path_srv" value="$(arg path_srv)" />
+    <param name="obstacle_file" value="$(arg obstacle_file)" />
+    <param name="variant" value="$(arg variant)" />
+
+      <!-- subscribers -->
+    <remap from="~target_pose_in" to="/target_pose" />
+
+      <!-- publishers -->
+    <remap from="~diagnostics_out" to="~diagnostics" />
+    <remap from="~true_target_out" to="~true_target" />
+
+  </node>
+
+</launch>

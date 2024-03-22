@@ -1,0 +1,4 @@
+constraint_management:
+
+  fallback_constraints:
+    GPS: "medium"

@@ -1,0 +1,78 @@
+name: simulation
+root: ./
+pre_window: export RUN_TYPE=simulation; export WORLD_NAME=simulation; export SENSORS=""; export ODOMETRY_TYPE="rtk"; export UAV_TYPE="x500"; export WORLD_FILE="./custom_configs/world.yaml"
+startup_window: swarm
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+  - gazebo:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_gazebo_resources simulation.launch gui:=true
+        - export UAV_NAME="uav1"; waitForOdometry; gz camera -c gzclient_camera -f uav1
+  - spawn:
+      layout: tiled
+      panes:
+        - waitForSimulation; roslaunch task_03_wrapper spawner.launch
+  - target:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_gazebo_resources mover.launch
+  - tf_connector:
+      layout: tiled
+      panes:
+        - export UAV_NAME="uav1"; waitForControl; roslaunch tf_connector tf_connector.launch custom_config:=./custom_configs/tf_connector.yaml
+  - drs:
+      layout: tiled
+      panes:
+        - export UAV_NAME="uav1"; waitForControl; rosrun rqt_reconfigure rqt_reconfigure
+  - plotter:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_wrapper plotter.launch
+  - randomizer:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_wrapper randomizer.launch n_uavs:=3
+        - waitForOdometry; rostopic echo /task_03_wrapper/randomizer
+  - control:
+      layout: tiled
+      panes:
+        - export UAV_NAME="uav1"; waitForOdometry; roslaunch mrs_uav_general core.launch config_odometry:=./custom_configs/odometry.yaml config_mpc_tracker:=./custom_configs/mpc_tracker.yaml config_se3_controller:=./custom_configs/se3_controller.yaml config_trajectory_generation:=./custom_configs/trajectory_generation.yaml config_constraint_manager:=./custom_configs/constraint_manager.yaml config_control_manager:=./custom_configs/control_manager.yaml
+        - export UAV_NAME="uav2"; waitForOdometry; roslaunch mrs_uav_general core.launch config_odometry:=./custom_configs/odometry.yaml config_mpc_tracker:=./custom_configs/mpc_tracker.yaml config_se3_controller:=./custom_configs/se3_controller.yaml config_trajectory_generation:=./custom_configs/trajectory_generation.yaml config_constraint_manager:=./custom_configs/constraint_manager.yaml config_control_manager:=./custom_configs/control_manager.yaml
+        - export UAV_NAME="uav3"; waitForOdometry; roslaunch mrs_uav_general core.launch config_odometry:=./custom_configs/odometry.yaml config_mpc_tracker:=./custom_configs/mpc_tracker.yaml config_se3_controller:=./custom_configs/se3_controller.yaml config_trajectory_generation:=./custom_configs/trajectory_generation.yaml config_constraint_manager:=./custom_configs/constraint_manager.yaml config_control_manager:=./custom_configs/control_manager.yaml
+  - param_server:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_wrapper param_server.launch task:=hunt_the_robot
+  - automatic_start:
+      layout: tiled
+      panes:
+        - export UAV_NAME="uav1"; waitForSimulation; roslaunch task_03_wrapper automatic_start.launch
+        - export UAV_NAME="uav2"; waitForSimulation; roslaunch task_03_wrapper automatic_start.launch
+        - export UAV_NAME="uav3"; waitForSimulation; roslaunch task_03_wrapper automatic_start.launch
+  - collision_checker:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch task_03_wrapper collision_checker.launch
+  - swarm:
+      layout: tiled
+      panes:
+        - export UAV_NAME="uav1"; waitForSimulation; roslaunch task_03_wrapper hunt_the_robot.launch n_uavs:=3
+        - export UAV_NAME="uav2"; waitForSimulation; roslaunch task_03_wrapper hunt_the_robot.launch n_uavs:=3
+        - export UAV_NAME="uav3"; waitForSimulation; roslaunch task_03_wrapper hunt_the_robot.launch n_uavs:=3
+        - waitForRos; roslaunch task_03_evaluation simulation_test.launch
+  - rviz:
+      layout: tiled
+      panes:
+        - export UAV_NAME="uav1"; waitForOdometry; sleep 4; rosrun rviz rviz -d ./rviz.rviz
+        - export UAV_NAME="uav1"; waitForOdometry; sleep 10; ~/.i3/layout_manager.sh ./layout.json
+  - robot_model:
+      layout: tiled
+      synchronize: after
+      panes:
+        - export UAV_NAME="uav1"; export UAV_TYPE="f450"; waitForControl; roslaunch mrs_rviz_plugins load_robot.launch
+        - export UAV_NAME="uav2"; export UAV_TYPE="f450"; waitForControl; roslaunch mrs_rviz_plugins load_robot.launch
+        - export UAV_NAME="uav3"; export UAV_TYPE="f450"; waitForControl; roslaunch mrs_rviz_plugins load_robot.launch

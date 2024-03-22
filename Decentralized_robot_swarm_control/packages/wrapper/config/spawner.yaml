@@ -1,0 +1,19 @@
+version: "1.0.0"
+
+n_uavs: 3
+
+uav_type: "x500"
+
+args: "--enable-ground-truth --enable-rangefinder"
+
+spawn_points: [
+  0, 0,
+  3, 0,
+  2.5, 2.5,
+  0, 3,
+  -2.5, 2.5,
+  -3, 0,
+  -2.5, -2.5,
+  0, -3,
+  2.5, -2.5,
+]

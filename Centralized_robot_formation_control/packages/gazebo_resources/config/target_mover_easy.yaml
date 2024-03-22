@@ -1,0 +1,33 @@
+variant: "easy"
+model_name: "ground_robot"
+
+start_positions: [
+
+  60.0, 60.0, 0.0,
+  -60.0, 60.0, 0.0,
+  60.0, -60.0, 0.0,
+  -60.0, -60.0, 0.0,
+
+  60.0, 30.0, 0.0,
+  -60.0, 30.0, 0.0,
+  60.0, -30.0, 0.0,
+  -60.0, -30.0, 0.0,
+
+  30.0, 60.0, 0.0,
+  -30.0, 60.0, 0.0,
+  30.0, -60.0, 0.0,
+  -30.0, -60.0, 0.0,
+
+] # [x, y, z] in meters
+
+speed: 0.5 # meters per second
+
+goal_threshold: 0.05 # meters
+
+cell_step: 10.0 # meters
+
+num_cells: 20
+
+run_away_from_formation:
+  use: false
+  cells_dist: 7 # will run from the formation if the manhattan distance (cell indexes, not meters!) of the formation to the robot is less than cells_dist

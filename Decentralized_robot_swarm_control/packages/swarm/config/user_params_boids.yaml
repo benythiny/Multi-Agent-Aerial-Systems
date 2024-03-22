@@ -1,0 +1,14 @@
+#param1: 1.0   # cohesion
+#param2: 70.0  # separation
+#param3: 40.0  # alignment
+#param4: 10.0  # target
+#param5: 0.65  # radius between uavs
+param1: 10.0   # cohesion
+param2: 1.7  # separation
+param3: 35.0  # alignment
+param4: 2.0  # target
+param5: 0.2  # radius between uavs
+param6: 10.0  # visibility
+param7: 0.0
+param8: 0.0
+param9: 0.0

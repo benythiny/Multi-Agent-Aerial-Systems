@@ -1,0 +1,100 @@
+<launch>
+
+  <arg name="RUN_TYPE" value="simulation" />
+  <arg name="STANDALONE" default="true"/>
+  <arg name="UAV_TYPE" value="x500" />
+  <arg name="ODOMETRY_TYPE" value="rtk" />
+  <arg name="SENSORS" value="" />
+  <arg name="WORLD_FILE" default="$(find task_02_evaluation)/config/custom_configs/world.yaml" />
+
+  <arg name="gui" default="false" />
+  <arg name="variant" default="" />
+
+  <include file="$(find task_02_gazebo_resources)/launch/simulation.launch">
+    <arg name="gui" value="$(arg gui)" />
+  </include>
+
+  <include file="$(find mrs_uav_general)/launch/core.launch">
+
+    <arg name="UAV_NAME" value="uav1" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+    <arg name="UAV_TYPE" value="$(arg UAV_TYPE)" />
+    <arg name="SENSORS" value="$(arg SENSORS)" />
+    <arg name="ODOMETRY_TYPE" value="$(arg ODOMETRY_TYPE)" />
+    <arg name="WORLD_FILE" value="$(arg WORLD_FILE)" />
+    <arg name="STANDALONE" value="$(arg STANDALONE)" />
+
+    <arg name="config_constraint_manager" value="$(find task_02_evaluation)/config/custom_configs/constraint_manager.yaml" />
+    <arg name="config_control_manager" value="$(find task_02_evaluation)/config/custom_configs/control_manager.yaml" />
+    <arg name="config_mpc_tracker" value="$(find task_02_evaluation)/config/custom_configs/mpc_tracker.yaml" />
+    <arg name="config_odometry" value="$(find task_02_evaluation)/config/custom_configs/odometry.yaml" />
+    <arg name="config_se3_controller" value="$(find task_02_evaluation)/config/custom_configs/se3_controller.yaml" />
+    <arg name="config_trajectory_generation" value="$(find task_02_evaluation)/config/custom_configs/trajectory_generation.yaml" />
+
+  </include>
+
+  <include file="$(find mrs_uav_general)/launch/core.launch">
+
+    <arg name="UAV_NAME" value="uav2" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+    <arg name="UAV_TYPE" value="$(arg UAV_TYPE)" />
+    <arg name="SENSORS" value="$(arg SENSORS)" />
+    <arg name="ODOMETRY_TYPE" value="$(arg ODOMETRY_TYPE)" />
+    <arg name="WORLD_FILE" value="$(arg WORLD_FILE)" />
+    <arg name="STANDALONE" value="$(arg STANDALONE)" />
+
+    <arg name="config_constraint_manager" value="$(find task_02_evaluation)/config/custom_configs/constraint_manager.yaml" />
+    <arg name="config_control_manager" value="$(find task_02_evaluation)/config/custom_configs/control_manager.yaml" />
+    <arg name="config_mpc_tracker" value="$(find task_02_evaluation)/config/custom_configs/mpc_tracker.yaml" />
+    <arg name="config_odometry" value="$(find task_02_evaluation)/config/custom_configs/odometry.yaml" />
+    <arg name="config_se3_controller" value="$(find task_02_evaluation)/config/custom_configs/se3_controller.yaml" />
+    <arg name="config_trajectory_generation" value="$(find task_02_evaluation)/config/custom_configs/trajectory_generation.yaml" />
+
+  </include>
+
+  <include file="$(find mrs_uav_general)/launch/core.launch">
+
+    <arg name="UAV_NAME" value="uav3" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+    <arg name="UAV_TYPE" value="$(arg UAV_TYPE)" />
+    <arg name="SENSORS" value="$(arg SENSORS)" />
+    <arg name="ODOMETRY_TYPE" value="$(arg ODOMETRY_TYPE)" />
+    <arg name="WORLD_FILE" value="$(arg WORLD_FILE)" />
+    <arg name="STANDALONE" value="$(arg STANDALONE)" />
+
+    <arg name="config_constraint_manager" value="$(find task_02_evaluation)/config/custom_configs/constraint_manager.yaml" />
+    <arg name="config_control_manager" value="$(find task_02_evaluation)/config/custom_configs/control_manager.yaml" />
+    <arg name="config_mpc_tracker" value="$(find task_02_evaluation)/config/custom_configs/mpc_tracker.yaml" />
+    <arg name="config_odometry" value="$(find task_02_evaluation)/config/custom_configs/odometry.yaml" />
+    <arg name="config_se3_controller" value="$(find task_02_evaluation)/config/custom_configs/se3_controller.yaml" />
+    <arg name="config_trajectory_generation" value="$(find task_02_evaluation)/config/custom_configs/trajectory_generation.yaml" />
+
+  </include>
+
+  <include file="$(find task_02_wrapper)/launch/spawner.launch">
+  </include>
+
+  <include file="$(find task_02_gazebo_resources)/launch/mover.launch">
+    <arg name="variant" value="$(arg variant)" />
+  </include>
+
+  <include file="$(find task_02_wrapper)/launch/automatic_start.launch">
+    <arg name="UAV_NAME" value="uav1" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+  </include>
+
+  <include file="$(find task_02_wrapper)/launch/automatic_start.launch">
+    <arg name="UAV_NAME" value="uav2" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+  </include>
+
+  <include file="$(find task_02_wrapper)/launch/automatic_start.launch">
+    <arg name="UAV_NAME" value="uav3" />
+    <arg name="RUN_TYPE" value="$(arg RUN_TYPE)" />
+  </include>
+
+  <include file="$(find tf_connector)/launch/tf_connector.launch">
+    <arg name="custom_config" value="$(find task_02_evaluation)/config/custom_configs/tf_connector.yaml" />
+  </include>
+
+</launch>

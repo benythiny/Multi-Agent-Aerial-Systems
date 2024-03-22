@@ -1,0 +1,9 @@
+param1: 5.0  # cohesion
+param2: 2.0   # separation
+param3: 2.0   # avoidance
+param4: 60.0  # attraction
+param5: 0.8   # safe distance for obstacles
+param6: 0.0
+param7: 0.0
+param8: 0.0
+param9: 0.0
